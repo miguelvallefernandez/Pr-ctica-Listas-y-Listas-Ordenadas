@@ -45,25 +45,25 @@ function add(list, elem) {
     if (isNaN(elem)) {
         throw "The element is not a number";
     }
-    if(isEmpty(list)){
-        list[0]=elem;
+    if (isEmpty(list)) {
+        list[0] = elem;
     }
-    else{
-        var i=0;
-        var aux="";
-        var aux2="";
-        while(list[i]<=elem){
+    else {
+        var i = 0;
+        var aux = "";
+        var aux2 = "";
+        while (list[i] <= elem) {
             i++;
         }
-        if(isNaN(list[i])){
-            list[i]=elem;
+        if (isNaN(list[i])) {
+            list[i] = elem;
         }
-        else{
-            aux=list[i];
-            aux2=list[i+1];
-            list[i]=elem;
-            list[i+1]=aux;
-            list[i+2]=aux2;
+        else {
+            aux = list[i];
+            aux2 = list[i + 1];
+            list[i] = elem;
+            list[i + 1] = aux;
+            list[i + 2] = aux2;
         }
 
     }
@@ -78,12 +78,83 @@ function get(list, index) {
     return list[index];
 }
 
+function toString(list) {
+    var text = "";
+    for (var i = 0; i < size(list); i++) {
+        if (i < size(list) - 1) {
+            text += list[i] + "-";
+        }
+        else {
+            text += list[i];
+        }
+
+    }
+    return text;
+}
 
 
+function IndexOf(list, elem) {
+    var find = -1;
+    if (isNaN(elem)) {
+        throw "Element ins not a number"
+    }
+    else {
 
+        for (var i = 0; i < size(list); i++) {
+            if (list[i] == elem) {
+                find = i;
+            }
+        }
+    }
 
+    return find;
+}
 
+function LastIndexOf(list, elem) {
+    var find = -1;
+    if (isNaN(elem)) {
+        throw "Element ins not a number"
+    }
+    else {
 
+        for (var i = size(list); i > 0; i--) {
+            if (list[i] == elem) {
+                find = i;
+            }
+        }
+    }
+
+    return find;
+}
+
+function capacity(list) {
+    return max_length;
+}
+
+function clear(list) {
+    for (var i = 0; i < size(list); i++) {
+        list[i] = NaN;
+    }
+}
+
+function firstElement(list) {
+    if (isEmpty(list)) {
+        throw "List is empty";
+    }
+    else {
+        return list[0];
+    }
+
+}
+
+function lastElement(list) {
+    if (isEmpty(list)) {
+        throw "List is empty";
+    }
+    else {
+        return list[size(list) - 1];
+    }
+}
 
 
 var list = create();
@@ -97,26 +168,54 @@ catch (error) {
 }
 
 console.log("ADD: ");
-try{
-    console.log(add(list,1));
+try {
+    console.log(add(list, 1));
     console.log(list);
-    console.log(add(list,5));
+    console.log(add(list, 5));
     console.log(list);
-    console.log(add(list,3));
+    console.log(add(list, 3));
     console.log(list);
-    console.log(add(list,1));
+    console.log(add(list, 1));
     console.log(list);
-    console.log(add(list,7));
+    console.log(add(list, 7));
     console.log(list);
-    console.log(add(list,4));
+    console.log(add(list, 4));
     console.log(list);
-    console.log(add(list,1));
+    console.log(add(list, 1));
 
 }
-catch (error){
+catch (error) {
     console.log(error);
 }
 
+console.log("TO STRING: ");
+console.log(toString(list));
+
+console.log("INDEXOF:");
+try {
+    console.log(IndexOf(list, 2));
+    console.log(IndexOf(list, 7));
+}
+catch (error) {
+    console.log(error);
+}
+
+console.log("LASTINDEXOF:");
+try {
+    console.log(LastIndexOf(list, 3));
+}
+catch (error) {
+    console.log(error);
+}
+
+console.log("FIRST ELEMENT & LAST ELEMENT:");
+try {
+    console.log(lastElement(list));
+    console.log(firstElement(list));
+}
+catch (error) {
+    console.log(error);
+}
 
 
 console.log(list);

@@ -105,6 +105,25 @@ function removeElement(list, elem) {
 }
 
 
+function firstElement(list) {
+    if (isEmpty(list)) {
+        throw "List is empty";
+    }
+    else {
+        return list[0];
+    }
+
+}
+
+function lastElement(list) {
+    if (isEmpty(list)) {
+        throw "List is empty";
+    }
+    else {
+        return list[size(list) - 1];
+    }
+}
+
 function set(list, elem, index) {
     var deleleted = list[index];
     if (isNaN(elem)) {
