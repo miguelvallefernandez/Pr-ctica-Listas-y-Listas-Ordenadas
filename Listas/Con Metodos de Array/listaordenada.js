@@ -4,9 +4,6 @@ var max_length = 6;
 
 function create() {   //Crea una lista de tamaño "max_length" y la rellena de NaN
     var list = [];
-    for (var i = 0; i < max_length; i++) {
-        list[i] = NaN;
-    }
     return list;
 }
 
@@ -45,28 +42,8 @@ function add(list, elem) {
     if (isNaN(elem)) {
         throw "The element is not a number";
     }
-    if (isEmpty(list)) {
-        list[0] = elem;
-    }
-    else {
-        var i = 0;
-        var aux = "";
-        var aux2 = "";
-        while (list[i] <= elem) {
-            i++;
-        }
-        if (isNaN(list[i])) {
-            list[i] = elem;
-        }
-        else {
-            aux = list[i];
-            aux2 = list[i + 1];
-            list[i] = elem;
-            list[i + 1] = aux;
-            list[i + 2] = aux2;
-        }
-
-    }
+    list.push(elem);
+    list.sort();
     return size(list);
 }
 
@@ -79,52 +56,22 @@ function get(list, index) {
 }
 
 function toString(list) {
-    var text = "";
-    for (var i = 0; i < size(list); i++) {
-        if (i < size(list) - 1) {
-            text += list[i] + "-";
-        }
-        else {
-            text += list[i];
-        }
-
-    }
-    return text;
+    return list.toString();
 }
 
 
-function IndexOf(list, elem) {
-    var find = -1;
+function indexOf(list, elem) {
     if (isNaN(elem)) {
-        throw "Element ins not a number"
+        throw "Element is not a number";
     }
-    else {
-
-        for (var i = 0; i < size(list); i++) {
-            if (list[i] == elem) {
-                find = i;
-            }
-        }
-    }
-
-    return find;
+    return list.indexOf(elem);
 }
 
-function LastIndexOf(list, elem) {
-    var find = -1;
+function lastIndexOf(list, elem) {
     if (isNaN(elem)) {
-        throw "Element ins not a number"
+        throw "Element is not a number";
     }
-    else {
-
-        for (var i = size(list); i > 0; i--) {
-            if (list[i] == elem) {
-                find = i;
-            }
-        }
-    }
-
-    return find;
+    return list.lastIndexOf(elem);
 }
 
 function capacity(list) {
@@ -157,38 +104,21 @@ function lastElement(list) {
 }
 
 function remove(list, index) {
+    var deleted = list[index];
     if (index < 0 || index > size(list)) {
-        throw "Index out of the limit";
+        throw "Out of the limit";
     }
-    else {
-        list[index] = NaN;
-
-        while (index < size(list)) {
-            list[index] = list[index + 1];
-            index++;
-        }
-
-    }
-
-    return size(list);
+    list.splice(index, 1);
+    return deleted;
 }
 
 function removeElement(list, elem) {
     if (isNaN(elem)) {
         throw "Element is not a number";
+        return false;
     }
-    else {
-        for (var i = 0; i < size(list); i++) {
-            if (list[i] == elem) {
-                list[i] = NaN;
-                while (i < size(list)) {
-                    list[i] = list[i + 1];
-                    i++;
-                }
-            }
-        }
-    }
-    return size(list);
+    remove(list, indexOf(list, elem));
+    return true;
 }
 
 
@@ -229,8 +159,8 @@ function test() {
 
     console.log("INDEXOF:");
     try {
-        console.log(IndexOf(list, 2));
-        console.log(IndexOf(list, 7));
+        console.log(indexOf(list, 2));
+        console.log(indexOf(list, 7));
     }
     catch (error) {
         console.log(error);
@@ -238,7 +168,7 @@ function test() {
 
     console.log("LASTINDEXOF:");
     try {
-        console.log(LastIndexOf(list, 3));
+        console.log(lastIndexOf(list, 3));
     }
     catch (error) {
         console.log(error);
@@ -270,6 +200,7 @@ function test() {
         console.log(error);
     }
     console.log(list);
+
 }
 
 test();
