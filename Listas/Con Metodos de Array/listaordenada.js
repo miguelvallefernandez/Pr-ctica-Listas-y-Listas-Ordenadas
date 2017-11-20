@@ -203,4 +203,30 @@ function test() {
 
 }
 
-test();
+var list;
+
+function myFunctionCreate() {
+    list = create();
+}
+
+function myFunctionAdd(){
+    var elem = document.getElementById("introduce").value;
+    add(list,elem);
+    result.innerHTML = list;
+}
+
+function myFunctionRemove(){
+    var elem = document.getElementById("introduce").value;
+    removeElement(list,elem);
+    result.innerHTML = list;
+}
+
+function myFunctionIndexOf(){
+    var elem = document.getElementById("introduce").value;
+    result.innerHTML = indexOf(list,elem);
+}
+
+function myFunctionLastIndexOf(){
+    var elem = document.getElementById("introduce").value;
+    result.innerHTML = lastIndexOf(list,elem);
+}

@@ -330,4 +330,31 @@ function test() {
 
 }
 
-test();
+var list;
+
+function myFunctionCreate() {
+    list = create();
+    result.innerHTML = list;
+}
+
+function myFunctionAdd(){
+    var elem = document.getElementById("introduce").value;
+    add(list,elem);
+    result.innerHTML = list;
+}
+
+function myFunctionRemove(){
+    var elem = document.getElementById("introduce").value;
+    removeElement(list,elem);
+    result.innerHTML = list;
+}
+
+function myFunctionIndexOf(){
+    var elem = document.getElementById("introduce").value;
+    result.innerHTML = IndexOf(list,elem);
+}
+
+function myFunctionLastIndexOf(){
+    var elem = document.getElementById("introduce").value;
+    result.innerHTML = LastIndexOf(list,elem);
+}
