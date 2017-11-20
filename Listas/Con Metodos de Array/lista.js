@@ -24,13 +24,7 @@ function isFull(list) {
 }
 
 function size(list) {
-    var length = 0;
-    for (var i = 0; i < max_length; i++) {
-        if (!isNaN(list[i])) {
-            length++;
-        }
-    }
-    return length;
+    return list.length;
 }
 
 

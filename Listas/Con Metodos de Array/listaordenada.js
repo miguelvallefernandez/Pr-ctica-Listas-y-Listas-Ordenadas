@@ -24,13 +24,7 @@ function isFull(list) {
 }
 
 function size(list) {
-    var length = 0;
-    for (var i = 0; i < max_length; i++) {
-        if (!isNaN(list[i])) {
-            length++;
-        }
-    }
-    return length;
+    return list.length;
 }
 
 
@@ -209,24 +203,24 @@ function myFunctionCreate() {
     list = create();
 }
 
-function myFunctionAdd(){
+function myFunctionAdd() {
     var elem = document.getElementById("introduce").value;
-    add(list,elem);
+    add(list, elem);
     result.innerHTML = list;
 }
 
-function myFunctionRemove(){
+function myFunctionRemove() {
     var elem = document.getElementById("introduce").value;
-    removeElement(list,elem);
+    removeElement(list, elem);
     result.innerHTML = list;
 }
 
-function myFunctionIndexOf(){
+function myFunctionIndexOf() {
     var elem = document.getElementById("introduce").value;
-    result.innerHTML = indexOf(list,elem);
+    result.innerHTML = indexOf(list, elem);
 }
 
-function myFunctionLastIndexOf(){
+function myFunctionLastIndexOf() {
     var elem = document.getElementById("introduce").value;
-    result.innerHTML = lastIndexOf(list,elem);
+    result.innerHTML = lastIndexOf(list, elem);
 }
